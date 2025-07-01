@@ -19,3 +19,10 @@ jobs:
             CLIENT_REALM: ${{ secrets.CLIENT_REALM }}
             QC_SLUG: code-review-demo
             FILE_EXTENSION: .tsx
+
+      - name: Create comment
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: ${{ steps.rqc.outputs.rqc_result }}
+          reactions: 'rocket'
