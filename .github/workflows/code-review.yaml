@@ -1,4 +1,4 @@
-name: CR Terraform
+name: CR Stackspot AI
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   code-review:
-    runs-on: ubuntu-2404-2cores-8gb
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with: 
