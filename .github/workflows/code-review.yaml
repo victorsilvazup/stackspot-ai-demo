@@ -1,0 +1,21 @@
+name: CR Terraform
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  code-review:
+    runs-on: ubuntu-2404-2cores-8gb
+    steps:
+      - uses: actions/checkout@v4
+        with: 
+          fetch-depth: 2
+      - uses: victorsilvazup/stackspot-ai-execute-rqc@v1
+        id: rqc
+        with:
+            CLIENT_ID: ${{ secrets.CLIENT_ID }}
+            CLIENT_KEY: ${{ secrets.CLIENT_KEY }}
+            CLIENT_REALM: ${{ secrets.CLIENT_REALM }}
+            QC_SLUG: code-review
+            FILE_EXTENSION: .tsx
